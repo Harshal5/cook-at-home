@@ -19,6 +19,15 @@ db.query('SELECT name FROM user WHERE user.password = "password"', function(erro
     console.log(result) 
 })
 
+app.get("/register", (req, res)=>{
+	const { name, mobile, email, password } = req.query;
+	db.query(`INSERT INTO user (name, mobile, email, password) VALUES ("${name}", ${mobile}, "${email}", "${password}")`, (err, resukt) =>{
+		if(err){
+			return res.send(err);
+		}
+	});
+});
+
 app.use((req, res, next) => {
 	let err = new Error("Page Not Found");
 	err.status = 404;
