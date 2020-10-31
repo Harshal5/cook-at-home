@@ -1,6 +1,10 @@
 {
-  "mongoURI": "mongodb+srv://rootUser:sds2020root@sss-x10cv.mongodb.net/InductionPortal?retryWrites=true&w=majority",
-  "localMongoURI": "mongodb://localhost:27017",
-  "accessTokenSecret": "dsasdjfksaldkdajflfkja;f",
-  "refreshTokenSecret": "sdkfjalsdkfjdsajjdfkjldkflkfj"
+	"sqlconfig": {
+		"host": "remotemysql.com",
+		"user": "WQYb9bO3qF",
+		"password": "QhIUrUo3gO",
+		"database": "WQYb9bO3qF"
+	},
+	"accessTokenSecret": "dsasdjfksaldkdajflfkja;f",
+	"refreshTokenSecret": "sdkfjalsdkfjdsajjdfkjldkflkfj"
 }
