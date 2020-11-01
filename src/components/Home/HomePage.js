@@ -52,10 +52,12 @@ const HomePage = () => {
 							color="textSecondary"
 							paragraph
 						>
-							Modi impedit quis nostrum dolorem nam. Voluptatem
-							recusandae omnis voluptatem veritatis quia
-							consequatur. Et eligendi minus voluptates beatae
-							aliquam dolor quos voluptates.
+							In today's busy world we get a lot of options to
+							order food at home but it cannot satisfy our passion
+							for cooking, In the proposed project we will define
+							a new way for passionate people to cook any food at
+							home without going through the hassle of finding and
+							ordering all the ingredients
 						</Typography>
 						<div className={classes.heroButtons}>
 							<Grid container spacing={2} justify="center">

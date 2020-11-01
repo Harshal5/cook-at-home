@@ -8,31 +8,31 @@ import RecipePage from "./Recipe";
 import ProtectedRoute from "./ProtectedRoute";
 import AuthPage from "./auth";
 import Navbar from "./Navbar";
+import Dashboard from "./dashboard/Dashboard";
 
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
 
 const theme = createMuiTheme({
 	typography: {
-	  fontFamily: [
-		'Montserrat',
-		'Roboto',
-		'"Helvetica Neue"',
-		'Arial',
-		'sans-serif'
-	  ].join(','),
-	}
-  });
-import Dashboard from "./dashboard/Dashboard";
+		fontFamily: [
+			"Montserrat",
+			"Roboto",
+			'"Helvetica Neue"',
+			"Arial",
+			"sans-serif",
+		].join(","),
+	},
+});
 
 const store = configureStore();
 localLogin(store);
 
 const App = () => {
 	return (
-		<ThemeProvider theme={theme} >
+		<ThemeProvider theme={theme}>
 			<Provider store={store}>
-				<Navbar/>
+				<Navbar />
 				<Router>
 					<div className="App">
 						<div className="page-contents">
@@ -43,10 +43,10 @@ const App = () => {
 								component={RecipePage}
 							></Route>
 							<Route
-							exact
-							path="/admin"
-							component={Dashboard}
-						></Route>
+								exact
+								path="/admin"
+								component={Dashboard}
+							></Route>
 							<Route path="/auth" component={AuthPage}></Route>
 						</div>
 					</div>
