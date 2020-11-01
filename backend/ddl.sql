@@ -51,19 +51,6 @@ CREATE TABLE reviews(
     FOREIGN KEY(user_id) REFERENCES user(user_id)
 );
 
-<<<<<<< HEAD
-DROP TABLE recipe_orders;
-CREATE TABLE recipe_orders(
-    order_id INT NOT NULL,
-    recipe_id INT NOT NULL,
-    PRIMARY KEY(order_id, recipe_id),
-    FOREIGN KEY(order_id) REFERENCES orders(order_id),
-    FOREIGN KEY(recipe_id) REFERENCES recipe(recipe_id),
-)
-
-DROP TABLE orders;
-=======
->>>>>>> 84aa4c6324b7ba2cba35eac3d186213571784b82
 CREATE TABLE orders (
     order_id INT NOT NULL AUTO_INCREMENT,
     user_id INT NOT NULL,
@@ -73,9 +60,6 @@ CREATE TABLE orders (
     bill INT NOT NULL,
     PRIMARY KEY(order_id),
     FOREIGN KEY(user_id) REFERENCES user(user_id)
-<<<<<<< HEAD
-)
-=======
 );
 
 CREATE TABLE recipe_orders(
@@ -85,4 +69,3 @@ CREATE TABLE recipe_orders(
     FOREIGN KEY(order_id) REFERENCES orders(order_id),
     FOREIGN KEY(recipe_id) REFERENCES recipe(recipe_id)
 );
->>>>>>> 84aa4c6324b7ba2cba35eac3d186213571784b82

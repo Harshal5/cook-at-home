@@ -1,39 +1,53 @@
 const jwt = require("jsonwebtoken");
 const config = require("config");
-const axios = require("axios");
+const db = require("../config/db");
 
 module.exports.signin = async (req, res, next) => {
 	try {
-		let user = await User.findOne({ username: req.body.username });
-		if (!user) {
-			return next({
-				status: 401,
-				message: "Invalid username/password",
+		let { email, password } = req.body;
+		let query = `SELECT * FROM user WHERE email="${email}" and password="${password}"`;
+		db.query(query, (err, result) => {
+			if (err) throw err;
+			let user = result[0];
+			console.log(user);
+			if (!user) {
+				return next({
+					status: 401,
+					message: "Invalid username/password",
+				});
+			}
+			let { user_id, name, mobile, email } = user;
+			let id = user_id;
+			let accessToken = jwt.sign(
+				{
+					id,
+					email,
+				},
+				config.get("accessTokenSecret"),
+				{
+					expiresIn: "1m",
+				}
+			);
+			let refreshToken = jwt.sign(
+				{
+					id,
+					email,
+				},
+				config.get("refreshTokenSecret"),
+				{
+					expiresIn: "7d",
+				}
+			);
+			return res.status(200).json({
+				id,
+				email,
+				mobile,
+				name,
+				accessToken,
+				refreshToken,
 			});
-		}
-		let { id, username, fullname, userData } = user;
-		// let isMatch = await user.comparePassword(req.body.password);
-		// if (isMatch) {
-		let accessToken = jwt.sign(
-			{
-				id,
-				username,
-			},
-			config.get("accessTokenSecret"),
-			{
-				expiresIn: "1m",
-			}
-		);
-		let refreshToken = jwt.sign(
-			{
-				id,
-				username,
-			},
-			config.get("refreshTokenSecret"),
-			{
-				expiresIn: "7d",
-			}
-		);
+		});
+		// let { id, username, fullname, userData } = user;
 		// if (userType === 'admin') {
 		//   if (user.clubs.length === 0) {
 		//     return next({
@@ -42,20 +56,6 @@ module.exports.signin = async (req, res, next) => {
 		//     });
 		//   }
 		// }
-		return res.status(200).json({
-			id,
-			username,
-			fullname,
-			accessToken,
-			refreshToken,
-			userData,
-		});
-		// } else {
-		//   return next({
-		//     status: 400,
-		//     message: 'Invalid username/password'
-		//   });
-		// }
 	} catch (err) {
 		next(err);
 	}
@@ -63,45 +63,41 @@ module.exports.signin = async (req, res, next) => {
 
 module.exports.signup = async (req, res, next) => {
 	try {
-		if (!(await portalAuth(req.body))) {
-			return next({
-				status: 401,
-				message: "Invalid username/password",
+		let { firstName, lastName, mobile, email, password } = req.body;
+		let name = firstName + " " + lastName;
+
+		let query = `INSERT INTO user(name, mobile, email, password) VALUES ("${name}", ${mobile}, "${email}", "${password}")`;
+
+		db.query(query, (err, result) => {
+			if (err) throw err;
+			let id = result.insertId;
+			let accessToken = jwt.sign(
+				{
+					id,
+					email,
+				},
+				config.get("accessTokenSecret"),
+				{
+					expiresIn: "2h",
+				}
+			);
+			let refreshToken = jwt.sign(
+				{
+					id,
+					email,
+				},
+				config.get("refreshTokenSecret"),
+				{
+					expiresIn: "7d",
+				}
+			);
+			return res.status(200).json({
+				id,
+				email,
+				name,
+				accessToken,
+				refreshToken,
 			});
-		}
-		let user = await User.create({
-			username: req.body.username,
-			fullname: req.body.fullname,
-			userData: { name: req.body.fullname },
-		});
-		let { id, username, fullname, userData } = user;
-		let accessToken = jwt.sign(
-			{
-				id,
-				username,
-			},
-			config.get("accessTokenSecret"),
-			{
-				expiresIn: "2h",
-			}
-		);
-		let refreshToken = jwt.sign(
-			{
-				id,
-				username,
-			},
-			config.get("refreshTokenSecret"),
-			{
-				expiresIn: "7d",
-			}
-		);
-		return res.status(200).json({
-			id,
-			username,
-			fullname,
-			accessToken,
-			refreshToken,
-			userData,
 		});
 	} catch (err) {
 		if (err.code === 11000) {
@@ -113,10 +109,6 @@ module.exports.signup = async (req, res, next) => {
 		});
 	}
 };
-
-// module.exports.refreshToken = async (req, res, next) => {
-
-// }
 
 module.exports.generateNewToken = async (req, res, next) => {
 	try {
@@ -149,11 +141,16 @@ module.exports.generateNewToken = async (req, res, next) => {
 };
 
 module.exports.verifyUser = async (req, res, next) => {
-	const user = await User.findOne({ _id: req.params.userId });
-	if (!user) {
-		res.status(400).json({ error: "No user found" });
-	} else {
-		res.userData = user.userData;
-	}
+	let query = `SELECT * FROM user WHERE user_id="${req.params.userId}"`;
+	db.query(query, (err, result) => {
+		if (err) throw err;
+		let user = result[0];
+		console.log(user);
+		if (!user) {
+			res.status(400).json({ error: "No user found" });
+		} else {
+			res.userData = user.userData;
+		}
+	});
 	next();
 };

@@ -46,6 +46,7 @@ const RegisterForm = (props) => {
 	const initialValues = {
 		firstName: "",
 		lastName: "",
+		mobile: "",
 		email: "",
 		password: "",
 		confirmPassword: "",
@@ -53,6 +54,10 @@ const RegisterForm = (props) => {
 	const validationSchema = Yup.object({
 		firstName: Yup.string().required("First Name is required"),
 		lastName: Yup.string().required("Last Name is required"),
+		mobile: Yup.number()
+			.min(1000000000, "Mobile no should be atleast 10 digit long")
+			.max(9999999999, "Mobile no should be atmost 10 digit long")
+			.required("Mobile Number is required"),
 		email: Yup.string()
 			.required("Email is required")
 			.email("Not a valid email"),
@@ -119,6 +124,17 @@ const RegisterForm = (props) => {
 									label="Last Name"
 									name="lastName"
 									autoComplete="lname"
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<FormTextField
+									variant="outlined"
+									required
+									fullWidth
+									id="mobile"
+									label="Mobile Number"
+									name="mobile"
+									autoComplete="mobile"
 								/>
 							</Grid>
 							<Grid item xs={12}>
