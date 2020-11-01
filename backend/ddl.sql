@@ -14,6 +14,7 @@ CREATE TABLE address(
     user_id int not null,
     address varchar(100) not null,
     foreign key(user_id) references user(user_id)
+    on delete cascade
 );
 
 CREATE TABLE recipe(
@@ -37,8 +38,10 @@ CREATE TABLE ingredients(
     ingredient_id int not null,
     quantity int not null,
     primary key(recipe_id, ingredient_id),
-    foreign key(recipe_id) references recipe(recipe_id),
+    foreign key(recipe_id) references recipe(recipe_id)
+    on delete cascade,
     foreign key(ingredient_id) references stock(ingredient_id)
+    on delete cascade
 );
 
 CREATE TABLE reviews(
@@ -47,8 +50,10 @@ CREATE TABLE reviews(
     rating INT NOT NULL,
     comment VARCHAR(250),
     PRIMARY KEY(recipe_id, user_id),
-    FOREIGN KEY(recipe_id) REFERENCES recipe(recipe_id),
+    FOREIGN KEY(recipe_id) REFERENCES recipe(recipe_id)
+    on delete cascade,
     FOREIGN KEY(user_id) REFERENCES user(user_id)
+    on delete cascade
 );
 
 CREATE TABLE orders (
@@ -60,12 +65,15 @@ CREATE TABLE orders (
     bill INT NOT NULL,
     PRIMARY KEY(order_id),
     FOREIGN KEY(user_id) REFERENCES user(user_id)
+    on delete cascade
 );
 
 CREATE TABLE recipe_orders(
     order_id INT NOT NULL,
     recipe_id INT NOT NULL,
     PRIMARY KEY(order_id, recipe_id),
-    FOREIGN KEY(order_id) REFERENCES orders(order_id),
+    FOREIGN KEY(order_id) REFERENCES orders(order_id)
+    on delete cascade,
     FOREIGN KEY(recipe_id) REFERENCES recipe(recipe_id)
+    on delete cascade
 );
