@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getStock, addIngredient, updateQuantity, updateRate } = require("../handlers/ingredients")
+const { getStock, addIngredient, updateQuantity, updateRate } = require("../handlers/stock")
 
 router.get("/", getStock);
 router.post("/add", addIngredient);

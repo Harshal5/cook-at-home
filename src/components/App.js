@@ -7,6 +7,7 @@ import HomePage from "./Home";
 import RecipePage from "./Recipe";
 import ProtectedRoute from "./ProtectedRoute";
 import AuthPage from "./auth";
+import Dashboard from "./dashboard/Dashboard";
 
 const store = configureStore();
 localLogin(store);
@@ -22,6 +23,11 @@ const App = () => {
 							exact
 							path="/recipes/:recipeId"
 							component={RecipePage}
+						></Route>
+						<Route
+							exact
+							path="/admin"
+							component={Dashboard}
 						></Route>
 						<Route path="/auth" component={AuthPage}></Route>
 					</div>
