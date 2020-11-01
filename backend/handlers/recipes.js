@@ -1,4 +1,3 @@
-const { AssignmentReturnRounded } = require("@material-ui/icons");
 const config = require("config");
 const db = require("../config/db");
 
