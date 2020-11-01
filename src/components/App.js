@@ -23,6 +23,7 @@ const theme = createMuiTheme({
 	  ].join(','),
 	}
   });
+import Dashboard from "./dashboard/Dashboard";
 
 const store = configureStore();
 localLogin(store);
@@ -41,6 +42,11 @@ const App = () => {
 								path="/recipes/:recipeId"
 								component={RecipePage}
 							></Route>
+							<Route
+							exact
+							path="/admin"
+							component={Dashboard}
+						></Route>
 							<Route path="/auth" component={AuthPage}></Route>
 						</div>
 					</div>
