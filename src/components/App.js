@@ -8,6 +8,7 @@ import RecipePage from "./Recipe";
 import ProtectedRoute from "./ProtectedRoute";
 import AuthPage from "./auth";
 import Navbar from "./Navbar";
+import Dashboard from "./dashboard/Dashboard";
 
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
@@ -23,7 +24,6 @@ const theme = createMuiTheme({
 	  ].join(','),
 	}
   });
-import Dashboard from "./dashboard/Dashboard";
 
 const store = configureStore();
 localLogin(store);
