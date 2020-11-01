@@ -26,3 +26,43 @@ module.exports.getARecipe = async (req, res, next) => {
 		next(err);
 	}
 };
+
+module.exports.getReview = async (req, res, next) => {
+	try {
+		let query = `SELECT u.name, r.rating, r.comment FROM reviews AS r INNER JOIN user AS u on (u.user_id = r.user_id) WHERE r.recipe_id= ${req.params.recipe_id}`;
+		db.query(query, (err, result) => {
+			if (err) throw err;
+			console.log(result);
+			return res.status(200).json(result);
+		});
+	} catch (err) {
+		next(err);
+	}
+};
+
+module.exports.getIngredients = async (req, res, next) => {
+	try {
+		let query = `SELECT s.ingredient_name, i.quantity FROM ingredients AS i INNER JOIN stock AS s on (s.ingredient_id = i.ingredient_id) WHERE i.recipe_id= ${req.params.recipe_id}`;
+		db.query(query, (err, result) => {
+			if (err) throw err;
+			console.log(result);
+			return res.status(200).json(result);
+		});
+	} catch (err) {
+		next(err);
+	}
+};
+
+module.exports.addReview = async (req, res, next) => {
+	try {
+		let { recipe_id, user_id, rating, comment } = req.body;
+		let query = `INSERT INTO reviews(recipe_id, user_id, rating, comment) VALUES (${recipe_id}, ${user_id}, ${rating}, "${comment}")`;
+		db.query(query, (err, result) => {
+			if (err) throw err;
+			console.log(result);
+			return res.status(200).json(result);
+		});
+	} catch (err) {
+		next(err);
+	}
+};

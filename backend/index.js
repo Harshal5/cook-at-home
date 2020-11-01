@@ -16,6 +16,7 @@ app.use(morgan("dev"));
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/recipes", require("./routes/recipes"));
+app.use("/api/ingredients", require("./routes/ingredients"));
 
 app.use((req, res, next) => {
 	let err = new Error("Page Not Found");

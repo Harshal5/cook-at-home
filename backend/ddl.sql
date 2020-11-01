@@ -36,7 +36,7 @@ CREATE TABLE ingredients(
     recipe_id int not null,
     ingredient_id int not null,
     quantity int not null,
-    primary key(recipe_id),
+    primary key(recipe_id, ingredient_id),
     foreign key(recipe_id) references recipe(recipe_id),
     foreign key(ingredient_id) references stock(ingredient_id)
 );
