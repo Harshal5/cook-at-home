@@ -29,7 +29,7 @@ module.exports.getARecipe = async(req, res, next) =>{
 
 module.exports.getReview = async(req, res, next) => {
     try {
-        let query = `SELECT user.name, reviews.rating, reviews.comment FROM reviews INNER JOIN user on (user.user_id = reviews.user_id) WHERE reviews.recipe_id= ${req.params.recipe_id}`;
+        let query = `SELECT u.name, r.rating, r.comment FROM reviews AS r INNER JOIN user AS u on (u.user_id = r.user_id) WHERE r.recipe_id= ${req.params.recipe_id}`;
         db.query(query, (err, result) => {
             if(err) throw err;
             console.log(result);
@@ -42,7 +42,7 @@ module.exports.getReview = async(req, res, next) => {
 
 module.exports.getIngredients = async(req, res, next) => {
     try {
-        let query = `SELECT stock.ingredient_name, ingredients.quantity FROM ingredients INNER JOIN stock on (stock.ingredient_id = ingredients.ingredient_id) WHERE ingredients.recipe_id= ${req.params.recipe_id}`;
+        let query = `SELECT s.ingredient_name, i.quantity FROM ingredients AS i INNER JOIN stock AS s on (s.ingredient_id = i.ingredient_id) WHERE i.recipe_id= ${req.params.recipe_id}`;
         db.query(query, (err, result) => {
             if(err) throw err;
             console.log(result);
