@@ -12,13 +12,18 @@ export default function Main(props) {
 	const { recipe } = props;
 	let num = 1;
 	return (
-		<Grid item xs={12} md={8}>
-			<Typography variant="h4" gutterBottom>
+		<Grid container justify="center">
+			
+			<Grid item xs={12} md={8}>
+
+			<Typography variant="h3" align="center" gutterBottom>
 				Instructions
 			</Typography>
 			<Divider />
-			<Typography>Prep Time: {recipe.prep_time}</Typography>
-			{JSON.stringify(recipe)}
+			<br/>
+			<Typography align="right"><b>Prep Time:</b> <b>{recipe.prep_time} mins</b></Typography>
+		
+			{/* {JSON.stringify(recipe)} */}
 			<List>
 				{recipe.instructions &&
 					recipe.instructions.split("\r\n\r\n").map((step) => (
@@ -34,6 +39,8 @@ export default function Main(props) {
 						</ListItem>
 					))}
 			</List>
+			</Grid>
+	
 		</Grid>
 	);
 }

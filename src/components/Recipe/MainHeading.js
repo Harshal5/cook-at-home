@@ -58,13 +58,13 @@ const MainHeading = (props) => {
 					<div className={classes.mainFeaturedPostContent}>
 						<Typography
 							component="h1"
-							variant="h3"
+							variant="h2"
 							color="inherit"
 							gutterBottom
 						>
 							{post.title}
 						</Typography>
-						<Typography variant="h5" color="inherit" paragraph>
+						<Typography variant="h6" align="left" color="inherit" paragraph>
 							{post.description}
 						</Typography>
 					</div>
