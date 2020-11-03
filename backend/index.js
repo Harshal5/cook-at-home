@@ -18,6 +18,7 @@ app.use("/api/auth", require("./routes/auth"));
 app.use("/api/recipes", require("./routes/recipes"));
 app.use("/api/stocks", require("./routes/stock"));
 app.use("/api/orders", require("./routes/order"));
+app.use("/api/reviews", require("./routes/reviews"));
 
 app.use((req, res, next) => {
 	let err = new Error("Page Not Found");
