@@ -23,30 +23,47 @@ const styles = (theme) => ({
 });
 
 class Orders extends React.Component {
+	componentDidMount() {
+		this.props.fetchStockDetails();
+	}
+
 	render() {
-		const { classes, orders } = this.props;
+		const { classes, stock } = this.props;
 		let srNo = 1;
 		return (
 			<React.Fragment>
-				<Title>Order Details</Title>
+				<Title>Stock</Title>
 				<Table size="small">
 					<TableHead>
 						<TableRow>
 							<TableCell>Sr No</TableCell>
 							<TableCell>Name</TableCell>
-							<TableCell>Time</TableCell>
-							<TableCell align="right">Payment</TableCell>
+							{/* <TableCell>Ship To</TableCell> */}
+							{/* <TableCell>Payment Method</TableCell> */}
+							<TableCell align="right">Quantity</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{orders.map((row) => (
-							<TableRow key={row.order_id}>
-								<TableCell>{row.order_id}</TableCell>
-								<TableCell>{row.name}</TableCell>
-								<TableCell>{row.order_time}</TableCell>
-								<TableCell align="right">{row.bill}</TableCell>
-							</TableRow>
-						))}
+						{stock.loaded === true &&
+							stock.data.stock.map((row) => (
+								<TableRow key={row.ingredient_id}>
+									<TableCell>{row.ingredient_id}</TableCell>
+									<TableCell>{row.ingredient_name}</TableCell>
+									{/* <TableCell>{row.shipTo}</TableCell> */}
+									{/* <TableCell>{row.paymentMethod}</TableCell> */}
+									<TableCell align="right">
+										<Icon
+											className="fa fa-minus-circle"
+											color="primary"
+										/>
+										{row.quantity_available}
+										<Icon
+											className="fa fa-plus-circle"
+											color="primary"
+										/>
+									</TableCell>
+								</TableRow>
+							))}
 					</TableBody>
 				</Table>
 				<div className={classes.seeMore}>

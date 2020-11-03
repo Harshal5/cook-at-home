@@ -5,6 +5,21 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
+import Button from "@material-ui/core/Button";
+import Modal from "@material-ui/core/Modal";
+import Icon from "@material-ui/core/Icon";
+import { API } from "../../services/api";
+
+const getModalStyle = () => {
+	const top = 50;
+	const left = 50;
+
+	return {
+		top: `${top}%`,
+		left: `${left}%`,
+		transform: `translate(-${top}%, -${left}%)`,
+	};
+};
 
 const useStyles = makeStyles((theme) => ({
 	mainFeaturedPost: {
@@ -33,11 +48,47 @@ const useStyles = makeStyles((theme) => ({
 			paddingRight: 0,
 		},
 	},
+	paper: {
+		position: "absolute",
+		// width: 400,
+		backgroundColor: theme.palette.background.paper,
+		// boxShadow: theme.shadows[5],
+		padding: theme.spacing(2, 4, 3),
+	},
 }));
 
-const MainHeading = (props) => {
+const MainHeading = ({ user_id, price, post }) => {
 	const classes = useStyles();
-	const { post } = props;
+	const [modalStyle] = React.useState(getModalStyle);
+	const [open, setOpen] = React.useState(false);
+
+	const handleOpen = () => {
+		setOpen(true);
+		let res = API.post("/orders", {
+			user_id,
+			bill: price,
+		});
+	};
+
+	const handleClose = () => {
+		setOpen(false);
+	};
+
+	const body = (
+		<div style={modalStyle} className={classes.paper}>
+			<Typography variant="h4" id="simple-modal-title">
+				Thank you for ordering
+			</Typography>
+			{/* <Icon className="fa fa-smile-beam" color="primary" /> */}
+			<p>
+				<Icon
+					style={{ height: "100px", width: "100px" }}
+					className="far fa-smile-beam"
+					color="primary"
+				/>
+			</p>
+		</div>
+	);
 
 	return (
 		<Paper
@@ -64,9 +115,29 @@ const MainHeading = (props) => {
 						>
 							{post.title}
 						</Typography>
-						<Typography variant="h6" align="left" color="inherit" paragraph>
+						<Typography
+							variant="h6"
+							align="left"
+							color="inherit"
+							paragraph
+						>
 							{post.description}
 						</Typography>
+						<Button
+							variant="contained"
+							color="primary"
+							onClick={handleOpen}
+						>
+							Order Now
+						</Button>
+						<Modal
+							open={open}
+							onClose={handleClose}
+							aria-labelledby="simple-modal-title"
+							aria-describedby="simple-modal-description"
+						>
+							{body}
+						</Modal>
 					</div>
 				</Grid>
 			</Grid>

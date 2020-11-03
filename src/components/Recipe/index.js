@@ -13,9 +13,8 @@ import {
 import { fetchRecipeDetails } from "../../redux/recipeReducer/recipeActions";
 import MainHeading from "./MainHeading";
 import Main from "./Main";
-import Reviews from "./Reviews"
+import Reviews from "./Reviews";
 import Divider from "@material-ui/core/Divider";
-
 
 const styles = (theme) => ({
 	root: {
@@ -32,22 +31,24 @@ const styles = (theme) => ({
 
 const featuredPosts = [
 	{
-	  title: 'Harshal Patil',
-	  date: 'Nov 12',
-	  description:
-		'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-	  image: 'https://image.freepik.com/free-vector/man-profile-cartoon_18591-58482.jpg',
-	  imageText: 'Image Text',
+		title: "Harshal Patil",
+		date: "Nov 12",
+		description:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+		image:
+			"https://image.freepik.com/free-vector/man-profile-cartoon_18591-58482.jpg",
+		imageText: "Image Text",
 	},
 	{
-	  title: 'Kanhaiya Madaswar',
-	  date: 'Nov 11',
-	  description:
-		'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-	  image: 'https://image.freepik.com/free-vector/man-profile-cartoon_18591-58482.jpg',
-	  imageText: 'Image Text',
+		title: "Kanhaiya Madaswar",
+		date: "Nov 11",
+		description:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+		image:
+			"https://image.freepik.com/free-vector/man-profile-cartoon_18591-58482.jpg",
+		imageText: "Image Text",
 	},
-  ];
+];
 
 class Recipe extends React.Component {
 	componentDidMount() {
@@ -55,7 +56,7 @@ class Recipe extends React.Component {
 	}
 
 	render() {
-		let { recipe, classes } = this.props;
+		let { recipe, classes, user } = this.props;
 		console.log(this.props);
 		return (
 			<React.Fragment>
@@ -69,6 +70,8 @@ class Recipe extends React.Component {
 								image:
 									"https://source.unsplash.com/x5SRhkFajrA/1920x1269",
 							}}
+							user_id={user.data.id}
+							price={recipe.data.price}
 						/>
 						<Grid
 							container
@@ -78,17 +81,22 @@ class Recipe extends React.Component {
 							<Main recipe={recipe.data} />
 						</Grid>
 					</main>
-					
-					<Typography variant="h3" align="center" style={{marginTop:"100px", marginBottom:"50px"}} gutterBottom>
+
+					<Typography
+						variant="h3"
+						align="center"
+						style={{ marginTop: "100px", marginBottom: "50px" }}
+						gutterBottom
+					>
 						Reviews
-					<Divider />
+						<Divider />
 					</Typography>
 
 					<Grid container spacing={4}>
-            		{featuredPosts.map((post) => (
-              		<Reviews key={post.title} post={post} />
-            		))}
-          </Grid>
+						{featuredPosts.map((post) => (
+							<Reviews key={post.title} post={post} />
+						))}
+					</Grid>
 				</Container>
 			</React.Fragment>
 		);
