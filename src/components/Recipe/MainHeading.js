@@ -138,6 +138,9 @@ const MainHeading = ({ user_id, price, post }) => {
 						>
 							{body}
 						</Modal>
+						<Button variant="contained" color="primary">
+							Add Review
+						</Button>
 					</div>
 				</Grid>
 			</Grid>

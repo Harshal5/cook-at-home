@@ -14,6 +14,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import { Link } from "react-router-dom";
+import Icon from "@material-ui/core/Icon";
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -167,7 +169,12 @@ export default function PrimarySearchAppBar() {
 						color="inherit"
 						aria-label="open drawer"
 					>
-						<MenuIcon />
+						<Icon
+							component={Link}
+							style={{ color: "white" }}
+							to="/"
+							className="fa fa-home"
+						/>
 					</IconButton>
 					<Typography className={classes.title} variant="h6" noWrap>
 						Cook-at-Home

@@ -32,8 +32,8 @@ const App = () => {
 	return (
 		<ThemeProvider theme={theme}>
 			<Provider store={store}>
-				<Navbar />
 				<Router>
+					<Navbar />
 					<div className="App">
 						<div className="page-contents">
 							<Route exact path="/" component={HomePage}></Route>
