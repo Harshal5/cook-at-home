@@ -13,8 +13,8 @@ cd backend/
 npm i
 npm run dev
 ```
-Open [localhost:3000](http://localhost:3000/) in the browser
-SQL queries in [**backend/handlers**](https://github.com/kanhaiya38/cook-at-home/tree/main/backend/handlers) directory 
+- Open [localhost:3000](http://localhost:3000/) in the browser
+- SQL queries in [**backend/handlers**](https://github.com/kanhaiya38/cook-at-home/tree/main/backend/handlers) directory 
 ## Usage
 
 - Users are able to create and manage their account.
