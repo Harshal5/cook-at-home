@@ -1,6 +1,20 @@
 const config = require("config");
 const db = require("../config/db");
 
+module.exports.addRecipe = async (req, res,next) => {
+	try {
+		let { name, description, price, prep_time, instructions } = req.body;
+		let query = `INSERT INTO reviews(name, description, price, prep_time, instructions) VALUES (${name}, ${description}, ${price}, ${prep_time}, ${instructions})`;
+		db.query(query, (err, result) => {
+			if (err) throw err;
+			console.log(result);
+			return res.status(200).json(result);
+		});
+	} catch (err) {
+		next(err);
+	}
+}
+
 module.exports.getAllRecipes = async (req, res, next) => {
 	try {
 		let query = `SELECT recipe_id, name, description FROM recipe`;
