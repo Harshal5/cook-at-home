@@ -17,17 +17,18 @@ function createData(time, amount) {
 	return { time, amount };
 }
 
-const data = [
+// const data = [
 	// createData("00:00", 0),
 	// createData("03:00", 300),
 	// createData("06:00", 500),
 	// createData("09:00", 700),
 	// createData("12:00", 1000),
-];
+// ];
 
 export default function Chart({ orders }) {
 	const theme = useTheme();
 	console.log(orders);
+	let data = [];
 	orders.map(({ order_time, bill }) => {
 		data.push(createData(order_time, bill));
 	});
