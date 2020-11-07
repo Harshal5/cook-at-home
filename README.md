@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Cook-at-Home
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In today's busy world we get a lot of options to order food at home but it cannot satisfy our passion for cooking, In the proposed project we will define a new way for passionate people to cook any food at home without going through the hassle of finding and ordering all the ingredients.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
 
-### `yarn start`
+```bash
+git clone https://github.com/kanhaiya38/cook-at-home.git
+cd cook-at-home/
+npm i
+cd backend/
+npm i
+npm run dev
+```
+Open [localhost:3000](http://localhost:3000/) in the browser
+SQL queries in **handlers** directory 
+## Usage
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Users are able to create and manage their account.
+- Provides an easy way for enthusiastic home cooks to order required ingredients for the recipe.
+- Removes all the hassle of going through a painful ordering process.
+- Users are capable of searching through a huge library of recipes.
+- Review system helps user to choose a better option among all the available recipes.
+- Admin interface allows to keep track of stock of all the items in the inventory.
+- Admin is able to manage deliveries and control the access rights by each user as per requirement.
+- Generate daily reports for the admin.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Technologies Used
 
-### `yarn test`
+- **Database:** MySQL
+- **Front-End:** ReactJS, MaterialUI
+- **Back-End:** NodeJS, ExpressJS 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ER Diagram
+![ER Diagram](./ER.jpg) 
 
-### `yarn build`
+## Screenshots
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![image1](./screenshots/Screenshot%20from%202020-11-01%2022-31-49.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![image2](./screenshots/Screenshot%20from%202020-11-01%2022-32-02.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![image3](./screenshots/Screenshot%20from%202020-11-01%2022-32-09.png)
 
-### `yarn eject`
+![image4](./screenshots/Screenshot%20from%202020-11-01%2022-33-14.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![image5](./screenshots/Screenshot%20from%202020-11-01%2022-34-11.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![image6](./screenshots/Screenshot%20from%202020-11-01%2022-38-30.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![image7](./screenshots/Screenshot%20from%202020-11-01%2022-38-35.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![image8](./screenshots/Screenshot%20from%202020-11-01%2022-38-40.png)
+## Future Developments
+- Allowing users to add various recipes and share them with the community. 
+- Allow users to add videos of their own recipe.
+## Contributing
+- **Harshal Patil 111803160**
+- **Kanhaiya Madaswar 111803162**
+ 
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

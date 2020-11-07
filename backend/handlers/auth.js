@@ -5,7 +5,10 @@ const db = require("../config/db");
 module.exports.signin = async (req, res, next) => {
 	try {
 		let { email, password } = req.body;
+
+		// Query of Signing in
 		let query = `SELECT * FROM user WHERE email="${email}" and password="${password}"`;
+
 		db.query(query, (err, result) => {
 			if (err) throw err;
 			let user = result[0];
@@ -66,6 +69,7 @@ module.exports.signup = async (req, res, next) => {
 		let { firstName, lastName, mobile, email, password } = req.body;
 		let name = firstName + " " + lastName;
 
+		// Query of Registering a new User
 		let query = `INSERT INTO user(name, mobile, email, password) VALUES ("${name}", ${mobile}, "${email}", "${password}")`;
 
 		db.query(query, (err, result) => {
@@ -141,6 +145,8 @@ module.exports.generateNewToken = async (req, res, next) => {
 };
 
 module.exports.verifyUser = async (req, res, next) => {
+	
+	// Query to verfiy the JWT auuthorisation of the user
 	let query = `SELECT * FROM user WHERE user_id="${req.params.userId}"`;
 	db.query(query, (err, result) => {
 		if (err) throw err;

@@ -67,6 +67,7 @@ class RecipeList extends React.Component {
 			<React.Fragment>
 				<CssBaseline />
 				<main>
+					<h1 style= {{textAlign:"center"}}>Recipes</h1>
 					<Container className={classes.cardGrid} maxWidth="md">
 						<Grid container spacing={4}>
 							{recipeList.data.length > 0 &&
