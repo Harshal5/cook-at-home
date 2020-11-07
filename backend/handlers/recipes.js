@@ -36,7 +36,10 @@ module.exports.getAllRecipes = async (req, res, next) => {
 
 module.exports.getARecipe = async (req, res, next) => {
 	try {
+		
+		// Query to fetch a particular recipe
 		let query = `SELECT * FROM recipe WHERE recipe_id = ${req.params.recipe_id}`;
+		
 		db.query(query, (err, result) => {
 			if (err) throw err;
 			console.log(result[0]);
