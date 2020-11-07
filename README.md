@@ -14,6 +14,7 @@ npm i
 npm run dev
 ```
 Open [localhost:3000](http://localhost:3000/) in the browser
+SQL queries in **handlers** directory 
 ## Usage
 
 - Users are able to create and manage their account.
