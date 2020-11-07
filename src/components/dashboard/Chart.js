@@ -28,6 +28,7 @@ const data = [
 export default function Chart({ orders }) {
 	const theme = useTheme();
 	console.log(orders);
+	let data = []
 	orders.map(({ order_time, bill }) => {
 		data.push(createData(order_time, bill));
 	});
