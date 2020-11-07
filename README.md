@@ -33,7 +33,7 @@ SQL queries in **handlers** directory
 - **Back-End:** NodeJS, ExpressJS 
 
 ## ER Diagram
-![ER Diagram](./ER.jpg) 
+![ER Diagram](./ER.png) 
 
 ## Screenshots
 
