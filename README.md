@@ -31,6 +31,9 @@ Open [localhost:3000](http://localhost:3000/) in the browser
 - **Front-End:** ReactJS, MaterialUI
 - **Back-End:** NodeJS, ExpressJS 
 
+## ER Diagram
+![ER Diagram](./ER.jpg) 
+
 ## Screenshots
 
 ![image1](./screenshots/Screenshot%20from%202020-11-01%2022-31-49.png)
